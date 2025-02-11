@@ -31,7 +31,7 @@ class TestAccountService(TestCase):
     
     @classmethod
     def setUpClass(cls):
-        """Se ejecuta una vez antes de todas las pruebas"""
+        """Se ejecuta una vez antes de todas las prueba s"""
         app.config["TESTING"] = True
         app.config["DEBUG"] = False
         app.config["SQLALCHEMY_DATABASE_URI"] = DATABASE_URI
