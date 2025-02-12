@@ -28,10 +28,9 @@ HTTPS_ENVIRON = {'wsgi.url_scheme': 'https'}
 class TestAccountService(TestCase):
     """Account Service Tests"""
 
-    
     @classmethod
     def setUpClass(cls):
-        """Se ejecuta una vez antes de todas las prueba s"""
+        """Se ejecuta una vez antes de todas las prueba"""
         app.config["TESTING"] = True
         app.config["DEBUG"] = False
         app.config["SQLALCHEMY_DATABASE_URI"] = DATABASE_URI
@@ -127,7 +126,7 @@ class TestAccountService(TestCase):
         )
         self.assertEqual(response.status_code, status.HTTP_415_UNSUPPORTED_MEDIA_TYPE)
 
-    
+
     # ADD YOUR TEST CASES HERE ...
     def test_read_an_account(self):
         ''' It should read an single account '''
@@ -190,12 +189,11 @@ class TestAccountService(TestCase):
         }
         for key, value in headers.items():
             self.assertEqual(response.headers.get(key), value)
-    
+
     def test_cors_security(self):
         """Debería devolver un encabezado CORS"""
         response = self.client.get('/', environ_overrides=HTTPS_ENVIRON)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         # Verificar el encabezado CORS
         self.assertEqual(response.headers.get('Access-Control-Allow-Origin'), '*')
-
 
